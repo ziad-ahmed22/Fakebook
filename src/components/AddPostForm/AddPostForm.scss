@@ -1,0 +1,26 @@
+@import "../../scss/variables";
+@import "../../scss/media";
+
+.add-post-form {
+  width: 330px;
+  @include media(sm) {
+    width: 450px;
+  }
+
+  .title {
+    border-bottom: 1px solid $light-gray-color;
+    color: $dark-color;
+  }
+
+  textarea {
+    min-height: 110px;
+    height: 140px;
+    max-height: 250px;
+    outline: none;
+    border: 1px solid $dark-color;
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+  }
+}

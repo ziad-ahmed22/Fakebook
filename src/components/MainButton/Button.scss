@@ -1,0 +1,40 @@
+@import "../../scss/variables";
+
+.my-btn {
+  text-transform: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  font-family: var(--main-font) !important;
+
+  // Contained Btn
+  &.MuiButton-contained {
+    background-color: $main-color;
+    &.Mui-disabled {
+      color: $white-color;
+      opacity: 0.5;
+      cursor: no-drop;
+      pointer-events: unset;
+    }
+  }
+
+  &.MuiButton-contained:hover,
+  &.MuiButton-contained:active,
+  &.MuiButton-contained:focus-visible {
+    color: $white-color;
+    background-color: $main-color-2;
+  }
+
+  // Outlined Btn
+  &.MuiButton-outlined,
+  &.MuiButton-outlined:hover,
+  &.MuiButton-outlined:active,
+  &.MuiButton-outlined:focus-visible {
+    color: $main-color-2;
+    border-color: $main-color-2;
+    &.Mui-disabled {
+      opacity: 0.5;
+      cursor: no-drop;
+      pointer-events: unset;
+    }
+  }
+}

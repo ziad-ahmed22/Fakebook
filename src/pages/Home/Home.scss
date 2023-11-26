@@ -1,0 +1,25 @@
+@import "../../scss/variables";
+
+.home-login {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    $main-color 60%,
+    $light-gray-color 40%
+  );
+
+  .header {
+    .logo {
+      color: $white-color;
+    }
+    .register-btn {
+      background-color: $main-color-2;
+    }
+  }
+
+  .content {
+    .text {
+      color: $white-color;
+    }
+  }
+}

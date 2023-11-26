@@ -1,0 +1,14 @@
+@import "../../scss/variables";
+@import "../../scss/media";
+
+.login-form {
+  background-color: $white-color;
+  width: 340px;
+  @include media(sm) {
+    width: 370px;
+  }
+
+  h3 {
+    color: $dark-color;
+  }
+}

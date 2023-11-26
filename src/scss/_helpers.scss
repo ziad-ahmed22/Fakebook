@@ -1,0 +1,162 @@
+@import "./media";
+
+// Font Weight
+
+$weights: (400, 500, 600, 700, 800);
+
+@each $weight in $weights {
+  .fw-#{$weight} {
+    font-weight: $weight !important;
+  }
+}
+
+// Border Raduis
+
+$borderRadiuses: (2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 25, 30);
+
+@each $radius in $borderRadiuses {
+  .rad-#{$radius} {
+    border-radius: $radius + px !important;
+  }
+}
+
+// Flex
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Width Height
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.wh-100 {
+  width: 100%;
+  height: 100%;
+}
+
+// Other
+
+.img-cover {
+  object-fit: cover;
+}
+
+.outline-none {
+  outline: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.err-color {
+  color: $error-color !important;
+}
+
+// Font Size
+
+.fs-14 {
+  font-size: 12px;
+
+  @include media(sm) {
+    font-size: 13px;
+  }
+
+  @include media(md) {
+    font-size: 14px;
+  }
+}
+
+.fs-16 {
+  font-size: 14px;
+
+  @include media(sm) {
+    font-size: 15px;
+  }
+
+  @include media(md) {
+    font-size: 16px;
+  }
+}
+
+.fs-18 {
+  font-size: 14px;
+
+  @include media(sm) {
+    font-size: 16px;
+  }
+
+  @include media(md) {
+    font-size: 18px;
+  }
+}
+
+.fs-20 {
+  font-size: 16px;
+
+  @include media(sm) {
+    font-size: 18px;
+  }
+
+  @include media(md) {
+    font-size: 20px;
+  }
+}
+
+.fs-22 {
+  font-size: 18px;
+
+  @include media(sm) {
+    font-size: 20px;
+  }
+
+  @include media(md) {
+    font-size: 22px;
+  }
+}
+
+.fs-24 {
+  font-size: 20px;
+
+  @include media(sm) {
+    font-size: 22px;
+  }
+
+  @include media(md) {
+    font-size: 24px;
+  }
+}
+
+.fs-26 {
+  font-size: 22px;
+
+  @include media(sm) {
+    font-size: 24px;
+  }
+
+  @include media(md) {
+    font-size: 26px;
+  }
+}
+
+.fs-40 {
+  font-size: 25px;
+
+  @include media(sm) {
+    font-size: 30px;
+  }
+
+  @include media(md) {
+    font-size: 40px;
+  }
+}

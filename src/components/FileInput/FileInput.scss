@@ -1,0 +1,24 @@
+@import "../../scss/variables";
+
+.file-input-wrapper {
+  label {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    border: 2px dashed $dark-color;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  &.error label {
+    border-color: $error-color;
+    color: $error-color;
+  }
+
+  &.error .helper-text {
+    color: $error-color;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

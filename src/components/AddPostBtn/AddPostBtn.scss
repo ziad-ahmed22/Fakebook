@@ -1,0 +1,12 @@
+@import "../../scss/variables";
+
+.add-post-btn {
+  [type="text"] {
+    border: 1px solid $dark-gray-color;
+    background-color: $white-color;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

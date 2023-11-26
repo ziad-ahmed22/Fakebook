@@ -1,0 +1,53 @@
+@import "../../scss/variables";
+
+.input-wrapper {
+  .MuiFormLabel-root {
+    color: $dark-color;
+    top: 5px;
+    font-family: var(--main-font);
+
+    &.Mui-error {
+      color: $error-color;
+      font-family: var(--main-font);
+    }
+  }
+
+  .MuiFormLabel-root[data-shrink="true"] {
+    color: $main-color;
+    font-weight: bold;
+    top: -5px;
+    font-family: var(--main-font);
+
+    &.Mui-error {
+      color: $error-color;
+      font-family: var(--main-font) !important;
+    }
+  }
+
+  .MuiInputBase-root {
+    border-bottom: 2px solid $dark-color;
+    font-family: var(--main-font);
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &.Mui-focused {
+      border-color: $main-color;
+      background-color: transparent;
+    }
+
+    &.Mui-error {
+      border-color: $error-color;
+      .MuiIconButton-root {
+        color: $error-color;
+      }
+    }
+  }
+
+  .MuiFormHelperText-root {
+    color: $error-color;
+    margin-top: 10px;
+  }
+}

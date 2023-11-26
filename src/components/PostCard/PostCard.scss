@@ -1,0 +1,125 @@
+@import "../../scss/variables";
+@import "../../scss/media";
+
+.post-card {
+  background-color: $white-color;
+
+  .post-header {
+    background-color: $light-gray-color-2;
+    border-bottom: 1px solid $light-gray-color;
+
+    .profile-img {
+      border: 5px solid $white-color;
+      height: 45px;
+      width: 45px;
+    }
+    .name {
+      color: $dark-color;
+    }
+    .time {
+      color: $dark-gray-color;
+    }
+  }
+
+  .post-body {
+    .post-img {
+      min-height: 200px;
+      max-height: 350px;
+    }
+    .post-text {
+      color: $dark-color;
+    }
+  }
+
+  .post-footer {
+    border-top: 1px solid $light-gray-color;
+    color: $dark-color;
+  }
+}
+
+// ///////////////////////
+.post-modal {
+  width: 355px;
+
+  @include media(sm) {
+    width: 540px;
+  }
+
+  @include media(md) {
+    width: 600px;
+  }
+
+  @include media(lg) {
+    width: 700px;
+  }
+
+  .post-header {
+    .profile-img {
+      border: 5px solid $light-gray-color-2;
+      height: 45px;
+      width: 45px;
+    }
+    .name {
+      color: $dark-color;
+    }
+    .time {
+      color: $dark-gray-color;
+    }
+  }
+
+  .post-body {
+    .post-img {
+      min-height: 200px;
+      max-height: 400px;
+    }
+    .post-text {
+      color: $dark-color;
+    }
+  }
+
+  .post-footer {
+    color: $dark-color;
+  }
+}
+
+// ///////////////////////
+.comments {
+  .comment {
+    border-top: 1px solid $light-gray-color;
+
+    .profile-img {
+      border: 5px solid $light-gray-color;
+      height: 42px;
+      width: 42px;
+    }
+
+    .comment-body {
+      background-color: $light-gray-color;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -8px;
+        border: 10px solid;
+        border-color: $light-gray-color transparent transparent;
+      }
+    }
+  }
+}
+
+// ///////////////////////
+.add-comment-form {
+  [type="text"] {
+    border: 1px solid $dark-gray-color;
+  }
+  [type="submit"] {
+    border: 1px solid $dark-gray-color;
+    background-color: $main-color;
+    color: $white-color;
+    &:hover {
+      background-color: $main-color-2;
+    }
+  }
+}
