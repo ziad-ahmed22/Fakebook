@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
+  currentPage: 0,
 };
 
 const PostsSlice = createSlice({
@@ -10,7 +11,8 @@ const PostsSlice = createSlice({
   reducers: {
     getPosts: (action) => action.payload,
     postsResponse: (state, action) => {
-      state.posts = action.payload;
+      state.posts = action.payload?.data;
+      state.currentPage = action.payload?.meta?.current_page;
     },
   },
 });

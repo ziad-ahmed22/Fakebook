@@ -7,7 +7,7 @@ import { postsResponse } from "../slices/postsSlice";
 function* getPostsSaga({ payload }) {
   try {
     const response = yield call(apis.getPosts, payload);
-    yield put(postsResponse(response.data?.data));
+    yield put(postsResponse(response.data));
   } catch (error) {
     yield put(
       showToast({

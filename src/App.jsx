@@ -31,9 +31,9 @@ const router = createBrowserRouter(
 );
 
 export const App = () => {
-  useEffect(() => {
-    alert("This Project Is Under Development");
-  }, []);
+  // useEffect(() => {
+  //   alert("This Project Is Under Development");
+  // }, []);
 
   return (
     <>

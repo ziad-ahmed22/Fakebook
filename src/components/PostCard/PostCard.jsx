@@ -1,6 +1,5 @@
 import "./PostCard.scss";
 import me from "../../assets/images/me.jpg";
-import portofolio from "../../assets/images/background1.jpg";
 import ModeIcon from "@mui/icons-material/Mode";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
@@ -9,7 +8,6 @@ import PropTypes from "prop-types";
 
 export default function PostCard({ post }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(post);
 
   return (
     <>
@@ -17,28 +15,35 @@ export default function PostCard({ post }) {
         <div className="post-header flex-between px-2 py-1">
           <div className="d-flex align-items-center">
             <img
-              src={post.author.profile_image || avatar}
-              alt="me"
+              src={
+                typeof post.author.profile_image === "string"
+                  ? post.author.profile_image
+                  : avatar
+              }
+              alt={post.author.name}
               className="profile-img rounded-circle"
             />
-            <h4 className="name mb-0 ms-2 fs-16 fw-bold">{post.author.name}</h4>
+            <h4 className="name mb-0 ms-2 fs-16 fw-bold">
+              {post.author.name || post.author.username}
+            </h4>
           </div>
-          <span className="time fs-14">31 minutes ago</span>
+          <span className="time fs-14">{post.created_at}</span>
         </div>
 
         <div className="post-body px-2">
-          <div className="post-img my-2">
-            {post.image && (
+          {typeof post.image === "string" && (
+            <div className="post-img my-2">
               <img
-                src={portofolio}
-                alt="me"
+                src={post.image}
+                alt="post image"
                 className="post-img w-100 img-cover wh-100"
               />
-            )}
-          </div>
+            </div>
+          )}
           <p className="post-text fs-16 my-3">
-            lorem ibsum doloer nome msja ewkd lorem ibsum doloer nome msja ewkd
-            lorem ibsum doloer nome msja ewkd lorem ibsum doloer nome msja ewkd
+            {post?.title}
+            <br />
+            {post?.body}
           </p>
         </div>
 
@@ -47,7 +52,13 @@ export default function PostCard({ post }) {
           onClick={() => setIsModalOpen(true)}
         >
           <ModeIcon />
-          <span className="fs-16 ms-2">5 Comments</span>
+          <span className="fs-16 ms-2">
+            {post.comments_count == 0
+              ? "write the first comment"
+              : post.comments_count == 1
+              ? `${post.comments_count} Comment`
+              : `${post.comments_count} Comments`}
+          </span>
         </div>
       </div>
 
@@ -56,7 +67,7 @@ export default function PostCard({ post }) {
         open={isModalOpen}
         activateBackdrop
         title="Post Details And Comments"
-        modalBody={<PostModal />}
+        modalBody={<PostModal post={post} />}
       />
     </>
   );
@@ -66,39 +77,64 @@ PostCard.propTypes = {
   post: PropTypes.object,
 };
 
-const PostModal = () => {
+const PostModal = ({ post }) => {
   return (
     <div className="post-modal p-2">
       <div className="post-header flex-between">
         <div className="d-flex align-items-center mb-1">
-          <img src={me} alt="me" className="profile-img rounded-circle" />
-          <h4 className="name mb-0 ms-2 fs-16 fw-bold">Ziad Ahmed</h4>
+          <img
+            src={
+              typeof post.author.profile_image === "string"
+                ? post.author.profile_image
+                : avatar
+            }
+            alt={post.author.name}
+            className="profile-img rounded-circle"
+          />
+          <h4 className="name mb-0 ms-2 fs-16 fw-bold">
+            {post.author.name || post.author.username}
+          </h4>
         </div>
-        <span className="time fs-14">31 minutes ago</span>
+        <span className="time fs-14">{post.created_at}</span>
       </div>
 
       <div className="post-body px-2">
-        <div className="post-img my-2">
-          <img
-            src={portofolio}
-            alt="me"
-            className="post-img w-100 img-cover wh-100"
-          />
-        </div>
+        {typeof post.image === "string" && (
+          <div className="post-img my-2">
+            <img
+              src={post.image}
+              alt="post image"
+              className="post-img w-100 img-cover wh-100"
+            />
+          </div>
+        )}
         <p className="post-text fs-16 my-3">
-          lorem ibsum doloer nome msja ewkd lorem ibsum doloer nome msja ewkd
-          lorem ibsum doloer nome msja ewkd lorem ibsum doloer nome msja ewkd
+          {post?.title}
+          <br />
+          {post?.body}
         </p>
       </div>
 
       <div className="post-footer p-2">
         <ModeIcon />
-        <span className="fs-16 ms-2 mb-3 d-inline-block">5 Comments</span>
+
+        <span className="fs-16 ms-2 mb-3 d-inline-block">
+          {post.comments_count == 0
+            ? "write the first comment"
+            : post.comments_count == 1
+            ? `${post.comments_count} Comment`
+            : `${post.comments_count} Comments`}
+        </span>
+
         <PostComments />
         <AddCommentForm />
       </div>
     </div>
   );
+};
+
+PostModal.propTypes = {
+  post: PropTypes.object,
 };
 
 const PostComments = () => {

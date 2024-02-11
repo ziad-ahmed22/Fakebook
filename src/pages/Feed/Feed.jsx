@@ -1,7 +1,7 @@
 import AddPostBtn from "../../components/AddPostBtn/AddPostBtn";
 import "./feed.scss";
 import PostCard from "../../components/PostCard/PostCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../store/slices/postsSlice";
@@ -10,16 +10,42 @@ export const Feed = () => {
   const dispatch = useDispatch();
   const postsArr = useSelector((state) => state.posts.posts);
 
-  console.log(postsArr);
-  const postsLimit = 2;
-  const currentPage = 2;
+  const postsLimit = 5;
+  const lastPage = useSelector((state) => state.posts.currentPage);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     dispatch(getPosts({ limit: postsLimit, page: currentPage }));
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
+  console.log(postsArr);
+
+  // Infinite Scroll
+  useEffect(() => {
+    const handleInfiniteScroll = () => {
+      // window.innerHeight + window.scrollY === document.body.offsetHeight
+      const endOfPage =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      if (endOfPage && currentPage < lastPage) {
+        setCurrentPage((prev) => prev + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleInfiniteScroll);
+    return () => window.removeEventListener("scroll", handleInfiniteScroll);
+  }, []);
 
   return (
     <div className="feed">
+      {/* For Test */}
+      <button
+        onClick={() => {
+          localStorage.removeItem("user");
+          window.location.reload();
+        }}
+      >
+        Logout
+      </button>
+
       <div className="navbar">NavBar</div>
 
       <div className="feed-content">
